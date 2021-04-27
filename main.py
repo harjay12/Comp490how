@@ -9,7 +9,8 @@ def final_price(state: str, records: List[Dict]) -> Union[Union[str, int, float]
     state_taxes = 0
     item = 0
     state_abb = []
-    url = "https://raw.githubusercontent.com/python-visualization/folium/master/examples/data"
+    url = "https://raw.githubusercontent.com/" \
+          "python-visualization/folium/master/examples/data"
     json_response = requests.get(f"{url}/us-states.json")
     for i in json_response.json()['features']:
         state_abb.append(i['id'])
