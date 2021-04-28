@@ -1,4 +1,8 @@
+import os
+import sys
 import main
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 
 def test_ma_final_price():
