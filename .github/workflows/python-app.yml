@@ -31,6 +31,5 @@ jobs:
         flake8 . --count --max-complexity=10 --max-line-length=127 --statistics
 
     - name: Test with pytest
-      run: |
-        run: pytest -vv test.py
-        working-directory: tests
+      run: pytest -vv test.py
+      working-directory: tests
