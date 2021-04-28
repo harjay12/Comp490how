@@ -1,7 +1,7 @@
-from typing import List, Union, Any, Dict
+from typing import List, Any, Dict
 
 
-def final_price(state: str, records: List[Dict]) -> Union[Union[str, int, float], Any]:
+def final_price(state: str, records: List[Dict]) -> Any:
     item_prices = []
     total_after_tax = 0
     state_taxes = 0
@@ -13,7 +13,8 @@ def final_price(state: str, records: List[Dict]) -> Union[Union[str, int, float]
         if i['price'] < 0:
             return 'No Returned allowed'
         if state not in state_abb:
-            return 'We do not provide tax info for this state pleas insert MA, ME, NH.'
+            return 'We do not provide tax info for this ' \
+                   'state please insert MA, ME, or NH.'
 
         if state == 'MA' \
                 and i['price'] > 175 \
@@ -43,9 +44,9 @@ def final_price(state: str, records: List[Dict]) -> Union[Union[str, int, float]
 
 if __name__ == '__main__':
     state = 'MA'
-    items = [{'State': state, 'price': 175, 'type': 'Clothing'},
-             {'State': state, 'price': 500, 'type': 'Wic Eligible food'},
-             {'State': state, 'price': 6, 'type': 'everything else'}]
+    items = [{'State': state, 'price': 400, 'type': 'Clothing'},
+             {'State': state, 'price': 2, 'type': 'Wic Eligible food'},
+             {'State': state, 'price': 800, 'type': 'everything else'}]
     total_charge = final_price(state, items)
     if type(total_charge) == float:
         print("{:.2f}".format(final_price(state, items)))
