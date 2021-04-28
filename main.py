@@ -6,7 +6,7 @@ def final_price(state: str, records: List[Dict]) -> Union[Union[str, int, float]
     total_after_tax = 0
     state_taxes = 0
     item = 0
-    state_abb = ['NH','MA','ME']
+    state_abb = ['NH', 'MA', 'ME']
 
     for i in records:
         if i['price'] < 0:
