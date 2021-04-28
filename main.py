@@ -43,9 +43,9 @@ def final_price(state: str, records: List[Dict]) -> Union[Union[str, int, float]
 
 if __name__ == '__main__':
     state = 'MA'
-    items = [{'State': state, 'price': 400, 'type': 'Clothing'},
-             {'State': state, 'price': 2, 'type': 'Wic Eligible food'},
-             {'State': state, 'price': 800, 'type': 'everything else'}]
+    items = [{'State': state, 'price': 175, 'type': 'Clothing'},
+             {'State': state, 'price': 500, 'type': 'Wic Eligible food'},
+             {'State': state, 'price': 6, 'type': 'everything else'}]
     total_charge = final_price(state, items)
     if type(total_charge) == float:
         print("{:.2f}".format(final_price(state, items)))

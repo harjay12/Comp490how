@@ -19,7 +19,7 @@ def test_ma_final_price(main):
     records = [{'State': state, 'price': 175, 'type': 'Clothing'},
                {'State': state, 'price': 500, 'type': 'Wic Eligible food'},
                {'State': state, 'price': 6, 'type': 'everything else'}]
-    assert main.final_price(state, records) == 701.3125
+    assert main.final_price(state, records) == 712.625
 
 
 def test_me_final_price(main):
