@@ -9,31 +9,34 @@ def final_price(state: str, records: List[Dict]) -> Union[Union[str, int, float]
     state_abb = ['NH', 'MA', 'ME']
 
     for i in records:
+        item_prices.append(i['price'])
         if i['price'] < 0:
             return 'No Returned allowed'
         if state not in state_abb:
             return 'We do not provide tax info for this state pleas insert MA, ME, NH.'
-        elif i['State'] == state \
-                and state == 'MA' \
-                and i['price'] >= 175 \
+
+        if state == 'MA' \
+                and i['price'] > 175 \
                 and (i['type'] == 'Clothing' or i['type'] == 'Wic Eligible food'):
-            item_prices.append(i['price'])
+
             for item in item_prices:
-                state_taxes = 0.0625 * (item-175)
+                state_taxes = 0.0625 * (item - 175)
             total_after_tax = total_after_tax + state_taxes + item
 
-        elif i['State'] == state \
-                and state == 'ME':
-            item_prices.append(i['price'])
+        elif state == 'ME':
             for item in item_prices:
                 state_taxes = 0.055 * item
             total_after_tax = total_after_tax + state_taxes + item
 
-        else:
-            item_prices.append(i['price'])
+        elif state == 'NH':
             for item in item_prices:
                 state_taxes = item
             total_after_tax = total_after_tax + state_taxes
+
+        else:
+            for item in item_prices:
+                state_taxes = 0.0625 * item
+            total_after_tax = total_after_tax + state_taxes + item
 
     return total_after_tax
 
@@ -43,4 +46,8 @@ if __name__ == '__main__':
     items = [{'State': state, 'price': 400, 'type': 'Clothing'},
              {'State': state, 'price': 2, 'type': 'Wic Eligible food'},
              {'State': state, 'price': 800, 'type': 'everything else'}]
-    print(final_price(state, items))
+    total_charge = final_price(state, items)
+    if type(total_charge) == float:
+        print("{:.2f}".format(final_price(state, items)))
+    else:
+        print(total_charge)
