@@ -2,7 +2,10 @@ import os
 import sys
 import main
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+file_path = os.path.abspath(__file__)
+cur_path = os.path.dirname(file_path)
+project_path = os.path.dirname(cur_path)
+sys.path.append(project_path)
 
 
 def test_ma_final_price():
