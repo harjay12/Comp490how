@@ -27,7 +27,9 @@ jobs:
 
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Install xmllint
-      run: sudo apt install libSDL-1.2-0-32bit
+      run: |
+        sudo apt-get update
+        sudo apt-cache search libsdl
     - name: Lint with flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
