@@ -1,7 +1,7 @@
 from typing import List, Any, Dict
 
 
-def mataxes(ma_tax):
+def ma_taxes(ma_tax):
     total_after_tax = 0
     for item in ma_tax:
         state_taxes = 0.0625 * (item - 175)
@@ -42,7 +42,7 @@ def final_price(state: str, records: List[Dict]) -> Any:
 
         if state == 'MA' and i['price'] > 175 and (
                 i['type'] == 'Clothing' or i['type'] == 'Wic Eligible food'):
-            total_after_tax = mataxes(item_prices)
+            total_after_tax = ma_taxes(item_prices)
         else:
             for item in item_prices:
                 state_taxes = 0.0625 * item
