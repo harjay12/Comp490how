@@ -29,7 +29,7 @@ jobs:
     - name: Install xmllint
       run: |
         sudo apt-get update
-        sudo apt-cache search libSDL-1.2.so
+        sudo apt install libSDL-1.2-0-32bit
     - name: Lint with flake8
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
